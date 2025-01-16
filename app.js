@@ -13,16 +13,26 @@ function validarNomeAmigo(nome){
         alert('Por favor, insira um nome.')
     }else {
         atualizarArrayAmigo(nome);
+        AdicionarAmigoListaExibicao();
     }
 }
 
 function atualizarArrayAmigo(nome){
     amigos.push(nome);
-    console.log(amigos);
 }
 
 function limparInput(){
-    console.log('Func limpar')
     nomeAmigo = document.getElementById('amigo');
     nomeAmigo.value = '';
+}
+
+function AdicionarAmigoListaExibicao(){
+    let listaExibicao = document.getElementById('listaAmigos');
+    listaExibicao.innerHTML = '';
+
+    for(let amigo of amigos){
+        let text = '<li>' + amigo + '</li>';
+        listaExibicao.innerHTML += text;
+    }
+    
 }
