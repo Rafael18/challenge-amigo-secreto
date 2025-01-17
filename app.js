@@ -44,9 +44,8 @@ function sortearAmigo(){
         let numero = gerarNumeroAleatorio();
 
         if(numero == 'limite'){
-            console.log(numero);
+            btnReinciarSorteio('sim');
         }else{
-            console.log('Entrou else mostrarSorteado');
             mostrarSorteado(numero);
         }
     }
@@ -68,7 +67,6 @@ function gerarNumeroAleatorio(){
     
     if (tamanhoArray == numerosGerados.length){
         alert('Todos os nomes foram sorteados. Por favor reinicie o jogo ou adicione mais amigos.');
-        
         return 'limite';
     }
     else if(numerosGerados.includes(novoNumeroGerado)){
@@ -83,4 +81,27 @@ function mostrarSorteado(numero){
     let sorteado = document.getElementById('resultado');
     sorteado.innerHTML = '';
     sorteado.innerHTML += '<li>'+ amigos[numero] +'</li>';
+}
+
+
+// PASSAR VALOR SIM OU NAO
+function btnReinciarSorteio(set){
+    
+    let divReiniciar = document.getElementById('reiniciarSorteio');
+    
+    if(set =='sim'){
+        divReiniciar.hidden = false;
+    }else{
+        divReiniciar.hidden = true;
+    }
+}
+
+function limparArray(){
+    amigos = [];
+    numerosGerados = [];
+    let listaExibicao = document.getElementById('listaAmigos');
+    listaExibicao.innerHTML = '';
+    let sorteado = document.getElementById('resultado');
+    sorteado.innerHTML = '';
+    btnReinciarSorteio('nao');
 }
